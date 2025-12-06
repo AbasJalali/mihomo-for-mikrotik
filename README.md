@@ -127,4 +127,3 @@ ui link:http://172.17.0.2:9090/ui/#/setup
 
 **Special thanks to wiktorbgu**
 
-Github:https://github.com/AbasJalali/mihomo-for-mikrotik
