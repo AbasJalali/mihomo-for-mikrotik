@@ -11,7 +11,7 @@
 - سازگار کامل با سیستم کانتینر Mikrotik RouterOS  
 - نصب آسان با دستورات استاندارد RouterOS  
 - ارسال خودکار جزئیات دستگاه (مدل، نسخه سیستم‌عامل، شماره سریال و غیره)
-
+</div>
 ## تنظیمات شبکه:
 ```
 /interface/bridge/add name=containers
@@ -53,7 +53,7 @@
 remote-image=registry-1.docker.io/samuraii40/mihomo-mikrotik-iranrules \
 root-dir=MIHOMO dns=1.1.1.1,1.0.0.1 start-on-boot=yes comment="MIHOMO"
 ```
-در ضمن شما میتونید با منگل کل ترافیک یک کلاینت را تانل کنید و از میهومو عبور بدین</div>
+در ضمن شما میتونید با منگل کل ترافیک یک کلاینت را تانل کنید و از میهومو عبور بدین
 # Mihomo Mikrotik Container (Iran Rules Support)
 
 The **Mihomo** container for Mikrotik RouterOS is ready-to-use and provides a stable tunnel gateway with **mixed-port support** (SOCKS + HTTPS on port 10808), direct routing for Iranian IPs and domains, and ⚠️ **HWID AUTHENTICATION FOR REMNAWAVE PANEL** ⚠️. The container automatically sends device metadata such as model, OS version, and serial number, which is required for panels that validate client identity.
