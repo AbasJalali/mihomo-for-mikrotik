@@ -28,7 +28,7 @@
 ```
 /container envs add list=MIHOMO key=UI_SECRET value=your_password
 /container envs add list=MIHOMO key=MIXED_PORT value=10808
-/container envs add list=MIHOMO key=CLIENT_USER_AGENT value=Mihomo/1.19.16
+/container envs add list=MIHOMO key=CLIENT_USER_AGENT value=Mihomo/1.19.17
 /container envs add list=MIHOMO key=CLIENT_DEVICE_MODEL value=your_mikrotik_model
 /container envs add list=MIHOMO key=CLIENT_VER_OS value=your_routeros_version
 /container envs add list=MIHOMO key=CLIENT_DEVICE_OS value=RouterOS
@@ -90,7 +90,7 @@ Before creating the container, set these environment variables so Mihomo can ide
 ```
 /container envs add list=MIHOMO key=UI_SECRET value=your_password
 /container envs add list=MIHOMO key=MIXED_PORT value=10808
-/container envs add list=MIHOMO key=CLIENT_USER_AGENT value=Mihomo/1.19.16
+/container envs add list=MIHOMO key=CLIENT_USER_AGENT value=Mihomo/1.19.17
 /container envs add list=MIHOMO key=CLIENT_DEVICE_MODEL value=your_mikrotik_model
 /container envs add list=MIHOMO key=CLIENT_VER_OS value=your_routeros_version
 /container envs add list=MIHOMO key=CLIENT_DEVICE_OS value=RouterOS
