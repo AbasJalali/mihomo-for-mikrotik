@@ -34,6 +34,7 @@
 /container envs add list=MIHOMO key=CLIENT_DEVICE_OS value=RouterOS
 /container envs add list=MIHOMO key=CLIENT_HWID value=your_mikrotik_serial
 /container envs add list=MIHOMO key=SUB1 value=your_subscription_url
+/container mounts add dst=/etc/mihomo/awg name=MIHOMO_AWG src=/usb1/wiregaurd/awg
 /container envs add list=MIHOMO key=MIXED_PORT_AUTH value=user:passwod#اگر یوزرپسورد نمیخواهید خالی بگذارید
 
 ```
