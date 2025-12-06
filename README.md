@@ -61,6 +61,7 @@ then stop/start container
 remote-image=registry-1.docker.io/samuraii40/mihomo-mikrotik-iranrules \
 root-dir=usb1/MIHOMO dns=1.1.1.1,1.0.0.1 start-on-boot=yes mounts=MIHOMO_AWG comment="MIHOMO"
 ```
+ui link:http://172.17.0.2:9090/ui/#/setup
 در ضمن شما میتونید با منگل کل ترافیک یک کلاینت را تانل کنید و از میهومو عبور بدین</div>
 # Mihomo Mikrotik Container (Iran Rules Support)
 
@@ -121,7 +122,7 @@ Use /system/routerboard/print on your Mikrotik to get model, serial, and OS vers
 remote-image=registry-1.docker.io/samuraii40/mihomo-mikrotik-iranrules \
 root-dir=usb1/MIHOMO dns=1.1.1.1,1.0.0.1 start-on-boot=yes mounts=MIHOMO_AWG comment="MIHOMO"
 ```
-
+ui link:http://172.17.0.2:9090/ui/#/setup
 ---
 
 **Special thanks to wiktorbgu**
