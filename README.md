@@ -5,15 +5,15 @@
 کانتینر **Mihomo** برای Mikrotik RouterOS آماده استفاده است و یک درگاه تونل پایدار با پشتیبانی از **پورت ترکیبی** (SOCKS + HTTPS روی پورت 10808)، مسیریابی مستقیم برای آی‌پی‌ها و دامنه‌های ایران، و ⚠️ **احراز هویت HWID برای پنل Remnawave** ⚠️ فراهم می‌کند. این کانتینر به صورت خودکار اطلاعات دستگاه مانند مدل، نسخه سیستم‌عامل و شماره سریال را ارسال می‌کند که برای پنل‌هایی که هویت کلاینت را بررسی می‌کنند ضروری است.
 
 ## ویژگی‌های کلیدی:
-- پورت ترکیبی 10808 (SOCKS + HTTPS)  با پسورد و بدون پسورد
+- پورت ترکیبی 10808 (SOCKS + HTTPS) به همراه یوزر و پسورد  
 - ⚠️ **احراز هویت HWID برای پنل Remnawave** ⚠️  
 - مسیریابی مستقیم برای رنج‌های آی‌پی و دامنه‌های ایران  
 - سازگار کامل با سیستم کانتینر Mikrotik RouterOS  
-- نصب آسان با دستورات استاندارد RouterOS
+- پشتیبانی از vless reality ولینک ساب  
 - پشتیبانی از وایرگارد
-- پشتیبانی از vless reality ولینک ساب </div>
 
-## تنظیمات شبکه:
+## تنظیمات شبکه:</div>
+
 ```
 /interface/bridge/add name=containers
 /ip/address/add address=172.17.0.1/24 interface=containers
@@ -37,8 +37,13 @@
 /container envs add list=MIHOMO key=MIXED_PORT_AUTH value=user:passwod#اگر یوزرپسورد نمیخواهید خالی بگذارید
 
 ```
-
-### گزینه جایگزین:
+## For use Wireguard/AmneziaWG 2.0 configs mount awg configurations dir
+```
+start container and copy warp.conf to mikrotik file and in cli type:
+/file set warp.conf name=usb1/wiregaurd/awg/warp.conf
+then stop/start container
+```
+### برای لینک کانفیگ vless reality:
 ```
 /container envs add list=MIHOMO key=SRV1 value=your_vless_link
 ```
@@ -52,9 +57,9 @@
 ```
 /container add envlists=MIHOMO interface=veth2 logging=no \
 remote-image=registry-1.docker.io/samuraii40/mihomo-mikrotik-iranrules \
-root-dir=MIHOMO dns=1.1.1.1,1.0.0.1 start-on-boot=yes comment="MIHOMO"
+root-dir=MIHOMO dns=1.1.1.1,1.0.0.1 start-on-boot=yes mounts=MIHOMO_AWG comment="MIHOMO"
 ```
-در ضمن شما میتونید با منگل کل ترافیک یک کلاینت را تانل کنید و از میهومو عبور بدین
+در ضمن شما میتونید با منگل کل ترافیک یک کلاینت را تانل کنید و از میهومو عبور بدین</div>
 # Mihomo Mikrotik Container (Iran Rules Support)
 
 The **Mihomo** container for Mikrotik RouterOS is ready-to-use and provides a stable tunnel gateway with **mixed-port support** (SOCKS + HTTPS on port 10808), direct routing for Iranian IPs and domains, and ⚠️ **HWID AUTHENTICATION FOR REMNAWAVE PANEL** ⚠️. The container automatically sends device metadata such as model, OS version, and serial number, which is required for panels that validate client identity.
@@ -64,8 +69,8 @@ The **Mihomo** container for Mikrotik RouterOS is ready-to-use and provides a st
 - ⚠️ **HWID AUTHENTICATION FOR REMNAWAVE PANEL** ⚠️  
 - Direct routing for Iranian IP ranges and domains  
 - Full compatibility with Mikrotik RouterOS container system  
-- Easy deployment using standard RouterOS commands  
-- Automatic device detail reporting (model, OS version, serial number, etc.)
+- Wiregaurd Support  
+- Support vless reality config or susbcription
 
 ## Network Setup
 ```
@@ -88,14 +93,21 @@ Before creating the container, set these environment variables so Mihomo can ide
 /container envs add list=MIHOMO key=CLIENT_DEVICE_OS value=RouterOS
 /container envs add list=MIHOMO key=CLIENT_HWID value=your_mikrotik_serial
 /container envs add list=MIHOMO key=SUB1 value=your_subscription_url
-/container envs add list=MIHOMO key=MIXED_PORT_AUTH value=user:passwod#If you do not want a username and password, leave it empty
+/container mounts add dst=/etc/mihomo/awg name=MIHOMO_AWG src=/usb1/wiregaurd/awg
+/container envs add list=MIHOMO key=MIXED_PORT_AUTH value=user:passwod
+#If you do not want a username and password, leave it empty
 ```
 
-### Alternative
+### for vless reality config
 ```
 /container envs add list=MIHOMO key=SRV1 value=your_vless_link
 ```
-
+## For use Wireguard/AmneziaWG 2.0 configs mount awg configurations dir
+```
+start container and copy warp.conf to mikrotik file and in cli type:
+/file set warp.conf name=usb1/wiregaurd/awg/warp.conf
+then stop/start container
+```
 ### Tip
 ```
 Use /system/routerboard/print on your Mikrotik to get model, serial, and OS version for environment variables.
@@ -105,15 +117,11 @@ Use /system/routerboard/print on your Mikrotik to get model, serial, and OS vers
 ```
 /container add envlists=MIHOMO interface=veth2 logging=no \
 remote-image=registry-1.docker.io/samuraii40/mihomo-mikrotik-iranrules \
-root-dir=MIHOMO dns=1.1.1.1,1.0.0.1 start-on-boot=yes comment="MIHOMO"
+root-dir=MIHOMO dns=1.1.1.1,1.0.0.1 start-on-boot=yes mounts=MIHOMO_AWG comment="MIHOMO"
 ```
-## For use Wireguard/AmneziaWG 2.0 configs mount awg configurations dir
-```
-/container mounts add dst=/etc/mihomo/awg name=MIHOMO_AWG src=/wiregaurd/awg
-```
-and copy your config files wireguard/amneziawg to mount dir /wiregaurd/awg
+
 ---
 
 **Special thanks to wiktorbgu**
 
-https://hub.docker.com/r/wiktorbgu/mihomo-mikrotik
+Github:https://github.com/AbasJalali/mihomo-for-mikrotik
