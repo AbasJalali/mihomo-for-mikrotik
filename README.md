@@ -35,7 +35,8 @@
 /container envs add list=MIHOMO key=CLIENT_HWID value=your_mikrotik_serial
 /container envs add list=MIHOMO key=SUB1 value=your_subscription_url
 /container mounts add dst=/etc/mihomo/awg name=MIHOMO_AWG src=/usb1/wiregaurd/awg
-/container envs add list=MIHOMO key=MIXED_PORT_AUTH value=user:passwod#اگر یوزرپسورد نمیخواهید خالی بگذارید
+/container envs add list=MIHOMO key=MIXED_PORT_AUTH value=user:passwod
+#اگر یوزرپسورد نمیخواهید خالی بگذارید
 
 ```
 ## For use Wireguard/AmneziaWG 2.0 configs mount awg configurations dir
