@@ -109,9 +109,9 @@ root-dir=MIHOMO dns=1.1.1.1,1.0.0.1 start-on-boot=yes comment="MIHOMO"
 ```
 ## For use Wireguard/AmneziaWG 2.0 configs mount awg configurations dir
 ```
-/container mounts add dst=/etc/mihomo/awg name=MIHOMO_AWG src=/docker_configs/mihomo_mikrotik/awg
+/container mounts add dst=/etc/mihomo/awg name=MIHOMO_AWG src=/wiregaurd/awg
 ```
-and copy your config files wireguard/amneziawg to mount dir /docker_configs/mihomo_mikrotik/awg
+and copy your config files wireguard/amneziawg to mount dir /wiregaurd/awg
 ---
 
 **Special thanks to wiktorbgu**
